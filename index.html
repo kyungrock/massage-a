@@ -3,7 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마사지 예약 - 휴식과 힐링</title>
+    <title>마사지사이트 힐링 - 전국 마사지 업체 예약</title>
+    
+    <!-- SEO 메타 태그 -->
+    <meta name="description" content="전국 마사지 업체를 한눈에! 태국마사지, 한국마사지, 스파, 왁싱까지. 지역별 최저가 마사지 업체를 찾아보세요.">
+    <meta name="keywords" content="마사지, 태국마사지, 한국마사지, 스파, 왁싱, 출장마사지, 마사지예약, 힐링, 최저가마사지">
+    <meta name="author" content="마사지사이트 힐링">
+    
+    <!-- Open Graph 메타 태그 (소셜 미디어 공유) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="마사지사이트 힐링 - 전국 마사지 업체 예약">
+    <meta property="og:description" content="전국 마사지 업체를 한눈에! 태국마사지, 한국마사지, 스파, 왁싱까지. 지역별 최저가 마사지 업체를 찾아보세요.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=마사지사이트+힐링">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:site_name" content="마사지사이트 힐링">
+    
+    <!-- Twitter 카드 메타 태그 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="마사지사이트 힐링 - 전국 마사지 업체 예약">
+    <meta name="twitter:description" content="전국 마사지 업체를 한눈에! 태국마사지, 한국마사지, 스파, 왁싱까지. 지역별 최저가 마사지 업체를 찾아보세요.">
+    <meta name="twitter:image" content="https://via.placeholder.com/1200x630?text=마사지사이트+힐링">
+    
+    <!-- 구조화 데이터 (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "마사지사이트 힐링",
+      "description": "전국 마사지 업체 예약 플랫폼",
+      "url": "https://yourdomain.com",
+      "telephone": "+82-10-0000-0000",
+      "priceRange": "₩₩",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 37.5665,
+        "longitude": 126.9780
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.5",
+        "reviewCount": "150"
+      }
+    }
+    </script>
+    
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -11,11 +58,11 @@
     <!-- 헤더 -->
     <header class="header">
         <div class="header-content">
-            <h1 class="logo">
+            <h1 class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">
                 <i class="fas fa-spa"></i>
-                마사지 예약
+                마사지사이트 힐링
             </h1>
-            <div class="search-toggle">
+            <div class="search-toggle" id="searchToggle">
                 <i class="fas fa-search"></i>
             </div>
         </div>

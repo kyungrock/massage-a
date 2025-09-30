@@ -549,6 +549,22 @@ function initializeApp() {
         allFilterBtn.classList.add('active');
     }
     
+    // 검색 토글 버튼 이벤트 리스너 (검색창으로 스크롤)
+    const searchToggle = document.getElementById('searchToggle');
+    const searchSection = document.querySelector('.search-section');
+    const mainSearchInput = document.getElementById('mainSearchInput');
+    
+    if (searchToggle && searchSection && mainSearchInput) {
+        searchToggle.addEventListener('click', function() {
+            // 검색창으로 부드럽게 스크롤
+            searchSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // 검색 입력창에 포커스
+            setTimeout(() => {
+                mainSearchInput.focus();
+            }, 500);
+        });
+    }
+    
     // 지역 선택 이벤트 리스너 (즉각 반응)
     regionSelect.addEventListener('change', function() {
         updateDistrictOptions(this.value);
@@ -953,7 +969,7 @@ function createShopCard(shop) {
                 
                 <div class="card-footer">
                     <div class="price-container">
-                        <div class="price">${shop.price}</div>
+                        <div class="price"><span class="price-label">최저가</span> ${shop.price}</div>
                         <div class="price-flags">${getCountryFlags(shop.type)}</div>
                     </div>
                 </div>

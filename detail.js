@@ -61,7 +61,6 @@ function displayShopInfo(shop) {
         shopAddress: document.getElementById('shopAddress'),
         shopPhone: document.getElementById('shopPhone'),
         shopPrice: document.getElementById('shopPrice'),
-        bookingPrice: document.getElementById('bookingPrice'),
         shopImage: document.getElementById('shopImage'),
         shopType: document.getElementById('shopType'),
         shopStars: document.getElementById('shopStars'),
@@ -75,7 +74,6 @@ function displayShopInfo(shop) {
     // 모든 정보를 즉시 표시 (성능 최적화)
     elements.shopName.textContent = shop.name;
     elements.shopPrice.textContent = shop.price;
-    elements.bookingPrice.textContent = shop.price;
     
     // 국기 표시
     if (typeof getCountryFlags === 'function') {

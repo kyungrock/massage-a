@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마사지 업체 상세 - 휴식과 힐링</title>
+    <title>마사지 업체 상세 - 마사지사이트 힐링</title>
+    
+    <!-- SEO 메타 태그 -->
+    <meta name="description" content="마사지 업체의 상세 정보, 가격, 코스, 리뷰를 확인하세요. 전화 예약 및 지도 보기 기능 제공.">
+    <meta name="keywords" content="마사지상세, 마사지예약, 마사지가격, 마사지코스, 마사지리뷰">
+    
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -14,9 +19,9 @@
             <button class="back-btn" onclick="goBack()">
                 <i class="fas fa-arrow-left"></i>
             </button>
-            <h1 class="logo">
+            <h1 class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">
                 <i class="fas fa-spa"></i>
-                업체 상세
+                마사지사이트 힐링
             </h1>
             <div class="header-actions">
                 <button class="map-btn" onclick="openMap()">
@@ -85,7 +90,7 @@
                 <div class="info-item">
                     <i class="fas fa-won-sign"></i>
                     <div>
-                        <span class="info-label">가격</span>
+                        <span class="info-label">최저가</span>
                         <span class="info-value" id="shopPrice"></span>
                     </div>
                 </div>
@@ -135,10 +140,6 @@
     <section class="booking-section">
         <div class="booking-container">
             <div class="booking-info">
-                <div class="price-info">
-                    <span class="price-label">예약 가격</span>
-                    <span class="price-value" id="bookingPrice"></span>
-                </div>
                 <div class="booking-actions">
                     <button class="call-btn" onclick="callShop()">
                         <i class="fas fa-phone"></i>
