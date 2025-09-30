@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마사지 업체 상세 - 휴식과 힐링</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="header-content">
+            <button class="back-btn" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1 class="logo">
+                <i class="fas fa-spa"></i>
+                업체 상세
+            </h1>
+            <div class="header-actions">
+                <button class="map-btn" onclick="openMap()">
+                    <i class="fas fa-map-marker-alt"></i>
+                </button>
+                <button class="share-btn" onclick="shareShop()">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 업체 이미지 섹션 -->
+    <section class="shop-image-section">
+        <div class="shop-image-container">
+            <img id="shopImage" src="" alt="업체 이미지" class="shop-main-image">
+            <div class="image-overlay">
+                <div class="shop-badge" id="shopType"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 업체 정보 섹션 -->
+    <section class="shop-info-section">
+        <div class="shop-info-container">
+            <div class="shop-header">
+                <div class="shop-name-container">
+                    <h1 id="shopName" class="shop-name"></h1>
+                    <div id="shopCountryFlags" class="shop-country-flags"></div>
+                </div>
+                <div class="shop-rating">
+                    <div class="stars" id="shopStars"></div>
+                    <span class="rating-text" id="shopRatingText"></span>
+                </div>
+            </div>
+            
+            <div class="shop-description">
+                <p id="shopDescription"></p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <span class="info-label">주소</span>
+                        <span class="info-value" id="shopAddress"></span>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <span class="info-label">전화번호</span>
+                        <span class="info-value" id="shopPhone"></span>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <span class="info-label">운영시간</span>
+                        <span class="info-value">09:00 - 22:00 (연중무휴)</span>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-won-sign"></i>
+                    <div>
+                        <span class="info-label">가격</span>
+                        <span class="info-value" id="shopPrice"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 코스 섹션 -->
+    <section class="courses-section">
+        <div class="courses-container">
+            <h2 class="section-title">코스별 가격</h2>
+            <div class="courses-list" id="coursesList">
+                <!-- 코스 목록이 여기에 동적으로 생성됩니다 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 서비스 섹션 -->
+    <section class="services-section">
+        <div class="services-container">
+            <h2 class="section-title">제공 서비스</h2>
+            <div class="services-grid" id="servicesList">
+                <!-- 서비스 목록이 여기에 동적으로 생성됩니다 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 리뷰 섹션 -->
+    <section class="reviews-section">
+        <div class="reviews-container">
+            <h2 class="section-title">리뷰</h2>
+            <div class="reviews-summary">
+                <div class="rating-overview">
+                    <span class="rating-number" id="overallRating"></span>
+                    <div class="stars" id="overallStars"></div>
+                    <span class="review-count" id="totalReviews"></span>
+                </div>
+            </div>
+            
+            <div class="reviews-list" id="reviewsList">
+                <!-- 리뷰 목록이 여기에 동적으로 생성됩니다 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 예약 섹션 -->
+    <section class="booking-section">
+        <div class="booking-container">
+            <div class="booking-info">
+                <div class="price-info">
+                    <span class="price-label">예약 가격</span>
+                    <span class="price-value" id="bookingPrice"></span>
+                </div>
+                <div class="booking-actions">
+                    <button class="call-btn" onclick="callShop()">
+                        <i class="fas fa-phone"></i>
+                        전화 예약
+                    </button>
+                    <button class="map-btn" onclick="openMap()">
+                        <i class="fas fa-map-marker-alt"></i>
+                        지도보기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <p>&copy; 2024 마사지 예약. 모든 권리 보유.</p>
+    </footer>
+
+    <!-- 카카오맵 API 키 없이 URL 방식 사용 -->
+    <script src="script.js"></script>
+    <script src="detail.js"></script>
+    <script>
+        // 즉시 실행 (DOMContentLoaded보다 빠름)
+        (function() {
+            // 상세 페이지 로드 (한 번만)
+            loadShopDetail();
+        })();
+        
+        // 페이지 언로드 시 정리
+        window.addEventListener('beforeunload', function() {
+            // 로딩 상태 리셋
+            if (typeof isPageLoaded !== 'undefined') {
+                isPageLoaded = false;
+            }
+            
+            // 이벤트 리스너만 정리
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.onclick = null;
+            });
+        });
+    </script>
+</body>
+</html>
