@@ -45,7 +45,7 @@ function loadShopDetail() {
 
     // 모든 정보를 즉시 로드 (성능 최적화)
     displayShopInfo(shop);
-    displayShopServices(shop);
+    displayStaffInfo(shop);
     displayShopCourses(shop);
     displayShopReviews(shop);
     console.log('업체 상세 페이지 로드 완료');
@@ -61,6 +61,7 @@ function displayShopInfo(shop) {
         shopAddress: document.getElementById('shopAddress'),
         shopPhone: document.getElementById('shopPhone'),
         shopPrice: document.getElementById('shopPrice'),
+        shopHours: document.getElementById('shopHours'),
         shopImage: document.getElementById('shopImage'),
         shopType: document.getElementById('shopType'),
         shopStars: document.getElementById('shopStars'),
@@ -83,6 +84,11 @@ function displayShopInfo(shop) {
     // 나머지 정보 표시
     elements.shopDescription.textContent = shop.description;
     elements.shopPhone.textContent = shop.phone;
+    
+    // 운영시간 표시 (operatingHours가 있으면 사용, 없으면 기본값)
+    if (elements.shopHours) {
+        elements.shopHours.textContent = shop.operatingHours || '09:00 - 22:00 (연중무휴)';
+    }
     
     // 타입 배지
     elements.shopType.textContent = getTypeName(shop.type);
@@ -191,6 +197,81 @@ function openKakaoMapWithURL(destinationAddress) {
 
 
 
+// 관리사 정보 표시
+function displayStaffInfo(shop) {
+    const staffInfo = document.getElementById('staffInfo');
+    
+    if (!staffInfo) return;
+    
+    let html = '';
+    
+    if (shop.staffInfo) {
+        // shop.staffInfo가 있으면 예쁘게 포맷팅
+        html = formatStaffInfo(shop.staffInfo);
+    } else {
+        // 기본 관리사 정보 생성
+        const defaultStaffInfo = getDefaultStaffInfo(shop.type);
+        html = `<h3>관리사 정보</h3><p>${defaultStaffInfo}</p>`;
+    }
+    
+    
+    staffInfo.innerHTML = html;
+}
+
+// 관리사 정보를 예쁘게 포맷팅
+function formatStaffInfo(staffText) {
+    // 기본 구조
+    let html = `
+        <h3>관리사 정보</h3>
+        <div class="staff-intro">
+            <p class="staff-main-title">전원 한국인 여 쌤들</p>
+            <p class="staff-subtitle">❤ 20대 & 힐링샵 ❤</p>
+            <p class="staff-certification">【 상기종목 테라피 수료 】</p>
+        </div>
+        <div class="staff-list">
+    `;
+    
+    // 관리사 목록 파싱 및 포맷팅 (이름(나이) 패턴 일반화)
+    const genericPattern = /([가-힣A-Za-z]+)\((\d{2})\)/g;
+    const parsedStaff = [];
+    let match;
+    while ((match = genericPattern.exec(staffText)) !== null) {
+        parsedStaff.push({ name: match[1], age: match[2] });
+    }
+    
+    if (parsedStaff.length > 0) {
+        parsedStaff.forEach(({ name, age }) => {
+            html += `
+                <div class="staff-item">
+                    <span class="staff-heart">❤</span>
+                    <span class="staff-name">${name}</span>
+                    <span class="staff-age">/ ${age}</span>
+                </div>
+            `;
+        });
+    } else {
+        // 기본 관리사 정보 표시
+        html += `<p class="staff-default">${staffText}</p>`;
+    }
+    
+    html += '</div>';
+    return html;
+}
+
+// 타입별 기본 관리사 정보 반환
+function getDefaultStaffInfo(type) {
+    const staffInfoMap = {
+        'korean': '전문 한국인 관리사들이 정성스럽게 서비스해드립니다.',
+        'thai': '태국 현지에서 수련한 전문 관리사들이 진정한 태국 전통 마사지를 제공합니다.',
+        'foot': '발마사지 전문 관리사들이 경락과 혈자리를 정확히 파악하여 서비스합니다.',
+        'spa': '스파 테라피 전문 관리사들이 프리미엄 힐링 서비스를 제공합니다.',
+        'outcall': '출장 전문 관리사들이 고객님의 공간에서 편안하게 서비스해드립니다.',
+        'waxing': '왁싱 전문 관리사들이 안전하고 정확한 서비스를 제공합니다.'
+    };
+    
+    return staffInfoMap[type] || '전문 관리사들이 정성스럽게 서비스해드립니다.';
+}
+
 // 서비스 목록 표시 (최적화됨)
 function displayShopServices(shop) {
     const servicesList = document.getElementById('servicesList');
@@ -210,16 +291,17 @@ function displayShopServices(shop) {
 function displayShopCourses(shop) {
     const coursesList = document.getElementById('coursesList');
     
-    // 업체 타입에 따른 코스 정보 생성
-    const courses = getCoursesByType(shop.type);
+    // shop.courses가 있으면 사용, 없으면 기본 코스 사용
+    const courses = shop.courses || getCoursesByType(shop.type);
     
     // innerHTML 사용으로 빠른 렌더링 (성능 최적화)
     let html = '';
     courses.forEach(category => {
         html += `<div class="course-category">
-            <div class="course-category-title">${category.name}</div>`;
+            <div class="course-category-title">${category.category || category.name}</div>`;
         
-        category.courses.forEach(course => {
+        const courseItems = category.items || category.courses;
+        courseItems.forEach(course => {
             html += `<div class="course-item">
                 <div class="course-header">
                     <span class="course-name">${course.name}</span>
@@ -422,8 +504,8 @@ function getDefaultServices(type) {
 function displayShopReviews(shop) {
     const reviewsList = document.getElementById('reviewsList');
     
-    // 샘플 리뷰 데이터 생성
-    const sampleReviews = generateSampleReviews(shop);
+    // shop.reviews가 있으면 사용, 없으면 샘플 리뷰 생성
+    const sampleReviews = shop.reviews || generateSampleReviews(shop);
     
     // innerHTML 사용으로 빠른 렌더링 (성능 최적화)
     let html = '';
@@ -435,7 +517,7 @@ function displayShopReviews(shop) {
                 <span class="review-date">${review.date}</span>
             </div>
             <div class="review-rating">${stars}</div>
-            <div class="review-text">${review.text}</div>
+            <div class="review-text">${review.comment}</div>
         </div>`;
     });
     
@@ -451,31 +533,31 @@ function generateSampleReviews(shop) {
             name: '김○○',
             rating: 5,
             date: '2024.01.15',
-            text: '정말 만족스러운 서비스였습니다. 직원분들도 친절하시고 시설도 깔끔해요. 다음에도 꼭 이용하고 싶어요!'
+            comment: '정말 만족스러운 서비스였습니다. 직원분들도 친절하시고 시설도 깔끔해요. 다음에도 꼭 이용하고 싶어요!'
         },
         {
             name: '이○○',
             rating: 4,
             date: '2024.01.10',
-            text: '가격 대비 좋은 서비스를 받았습니다. 마사지 기술도 훌륭하고 분위기도 좋았어요. 추천합니다.'
+            comment: '가격 대비 좋은 서비스를 받았습니다. 마사지 기술도 훌륭하고 분위기도 좋았어요. 추천합니다.'
         },
         {
             name: '박○○',
             rating: 5,
             date: '2024.01.08',
-            text: '스트레스가 많이 풀렸어요. 전문적인 마사지로 몸이 한결 가벼워진 느낌입니다. 감사합니다.'
+            comment: '스트레스가 많이 풀렸어요. 전문적인 마사지로 몸이 한결 가벼워진 느낌입니다. 감사합니다.'
         },
         {
             name: '최○○',
             rating: 4,
             date: '2024.01.05',
-            text: '예약하기 쉽고 직원분들이 친절하세요. 시설도 깔끔하고 편안한 분위기였습니다.'
+            comment: '예약하기 쉽고 직원분들이 친절하세요. 시설도 깔끔하고 편안한 분위기였습니다.'
         },
         {
             name: '정○○',
             rating: 5,
             date: '2024.01.02',
-            text: '정말 힐링되는 시간이었어요. 마사지 기술이 뛰어나고 시설도 최고입니다. 강력 추천!'
+            comment: '정말 힐링되는 시간이었어요. 마사지 기술이 뛰어나고 시설도 최고입니다. 강력 추천!'
         }
     ];
 
@@ -547,5 +629,42 @@ document.addEventListener('DOMContentLoaded', function() {
         shopImage.addEventListener('error', function() {
             this.src = 'https://via.placeholder.com/400x250?text=이미지+준비중';
         });
+    }
+});
+
+// 회사소개 모달 열기
+function openAboutModal(event) {
+    event.preventDefault();
+    const modal = document.getElementById('aboutModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // 스크롤 방지
+    }
+}
+
+// 이용약관 모달 열기
+function openTermsModal(event) {
+    event.preventDefault();
+    const modal = document.getElementById('termsModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // 스크롤 방지
+    }
+}
+
+// 모달 닫기
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // 스크롤 복원
+    }
+}
+
+// 모달 배경 클릭 시 닫기
+window.addEventListener('click', function(event) {
+    if (event.target.classList.contains('modal')) {
+        event.target.classList.remove('active');
+        document.body.style.overflow = '';
     }
 });

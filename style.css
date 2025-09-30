@@ -105,7 +105,7 @@ body {
 }
 
 .search-btn-small {
-    background: #667eea;
+    background: #ebeaf1;
     color: white;
     border: none;
     width: 40px;
@@ -197,10 +197,10 @@ body {
 /* 필터 섹션 */
 .filter-section {
     background: white;
-    padding: 15px 20px;
+    padding: 1px 20px;
     border-bottom: 1px solid #eee;
     position: sticky;
-    top: 60px;
+    top: 70px;
     z-index: 90;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
@@ -543,14 +543,245 @@ body {
 .footer {
     background: #333;
     color: white;
-    text-align: center;
-    padding: 20px;
+    padding: 30px 20px;
     margin-top: 40px;
 }
 
-.footer p {
+.footer-content {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none;
     font-size: 0.9rem;
-    opacity: 0.8;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: #667eea;
+}
+
+.footer-divider {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+}
+
+.footer-info {
+    margin-bottom: 15px;
+}
+
+.footer-info p {
+    margin: 8px 0;
+    font-size: 0.85rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.footer-phone {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.footer-phone:hover {
+    color: #764ba2;
+}
+
+.footer-contact-btn {
+    color: #e91e63;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+    transition: color 0.3s;
+}
+
+.footer-contact-btn:hover {
+    color: #f06292;
+}
+
+.footer-copyright {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-copyright p {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin: 0;
+}
+
+/* 모달 스타일 (회사소개, 이용약관) */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    max-width: 600px;
+    width: 100%;
+    margin: 50px auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 2px solid #f0f0f0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px 16px 0 0;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: white;
+    font-weight: 700;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.modal-close:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.modal-body {
+    padding: 25px;
+    max-height: 70vh;
+    overflow-y: auto;
+    line-height: 1.8;
+}
+
+.modal-body p {
+    margin: 15px 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.modal-body strong {
+    color: #333;
+    font-weight: 700;
+}
+
+.info-section {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+    border-left: 4px solid #667eea;
+}
+
+.info-section h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.info-section p {
+    margin: 0;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.highlight {
+    background: linear-gradient(135deg, #f0f4ff 0%, #fce4ec 100%);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #e3f2fd;
+    text-align: center;
+    margin-top: 25px;
+    font-size: 1rem;
+}
+
+.terms-section {
+    margin: 25px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border-left: 4px solid #667eea;
+}
+
+.terms-section h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.terms-section p {
+    margin: 10px 0;
+    color: #555;
+}
+
+.terms-section ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.terms-section li {
+    margin: 8px 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+.terms-section ul ul {
+    margin-top: 8px;
+    padding-left: 20px;
+}
+
+.terms-section ul ul li {
+    list-style-type: circle;
+    font-size: 0.9rem;
 }
 
 /* 반응형 디자인 */
@@ -784,7 +1015,7 @@ body {
 
 .address-container span {
     flex: 1;
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     color: #333;
     font-weight: 600;
     line-height: 1.2;
@@ -900,17 +1131,153 @@ body {
 }
 
 .info-label {
-    font-size: 0.8rem;
+    font-size: 0.80rem;
     color: #666;
     font-weight: 500;
     line-height: 1.2;
 }
 
 .info-value {
-    font-size: 0.9rem;
+    font-size: 1.00rem;
     color: #333;
     font-weight: 600;
     line-height: 1.2;
+}
+
+/* 관리사 정보 섹션 */
+.staff-section {
+    background: white;
+    padding: 25px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.staff-container {
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.staff-info {
+    background: #f8f9ff;
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 4px solid #667eea;
+}
+
+.staff-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.staff-info h3::before {
+    content: '👩‍⚕️';
+    font-size: 1.2rem;
+}
+
+.staff-info p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.staff-info p:last-child {
+    margin-bottom: 0;
+}
+
+.staff-info .highlight {
+    color: #667eea;
+    font-weight: 600;
+}
+
+/* 관리사 정보 상세 스타일 */
+.staff-intro {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, #ffbfd4 0%, #f0cbd5 100%);
+    border-radius: 12px;
+    color: white;
+}
+
+.staff-main-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.staff-subtitle {
+    font-size: 1.0rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: white;
+    opacity: 0.9;
+}
+
+.staff-certification {
+    font-size: 0.85rem;
+    color: white;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.staff-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.staff-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.staff-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.staff-heart {
+    color: #ff6b9d;
+    font-size: 1.1rem;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.staff-name {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.staff-age {
+    color: #666;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.staff-default {
+    text-align: center;
+    color: #666;
+    font-style: italic;
 }
 
 /* 서비스 섹션 */
@@ -1223,10 +1590,62 @@ body {
     }
     
     .shop-info-section,
+    .staff-section,
     .services-section,
     .reviews-section,
     .booking-section {
         padding: 20px 15px;
+    }
+    
+    .staff-info {
+        padding: 15px;
+    }
+    
+    .staff-info h3 {
+        font-size: 1.0rem;
+        margin-bottom: 12px;
+    }
+    
+    .staff-info p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    .staff-intro {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .staff-main-title {
+        font-size: 1.1rem;
+    }
+    
+    .staff-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .staff-certification {
+        font-size: 0.8rem;
+    }
+    
+    .staff-list {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 8px;
+    }
+    
+    .staff-item {
+        padding: 8px 10px;
+        flex-direction: column;
+        text-align: center;
+        gap: 4px;
+    }
+    
+    .staff-name {
+        font-size: 0.9rem;
+    }
+    
+    .staff-age {
+        font-size: 0.8rem;
     }
     
     .shop-name {
@@ -1274,11 +1693,11 @@ body {
     }
     
     .info-label {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
     }
     
     .info-value {
-        font-size: 0.85rem;
+        font-size: 1.00rem;
     }
     
     /* address-container 모바일 최적화 */
@@ -1288,7 +1707,7 @@ body {
     }
     
     .address-container span {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
     }
 }
 

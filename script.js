@@ -1,518 +1,193 @@
 // 지역별 구 데이터
 const districtData = {
     '서울': ['강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구', '노원구', '도봉구', '동대문구', '동작구', '마포구', '서대문구', '서초구', '성동구', '성북구', '송파구', '양천구', '영등포구', '용산구', '은평구', '종로구', '중구', '중랑구'],
-    '경기': ['수원시', '성남시', '의정부시', '안양시', '부천시', '광명시', '평택시', '과천시', '오산시', '시흥시', '군포시', '의왕시', '하남시', '용인시', '파주시', '이천시', '안성시', '김포시', '화성시', '광주시', '여주시', '양평군', '고양시', '의정부시', '동두천시', '가평군', '연천군'],
-    '인천': ['중구', '동구', '미추홀구', '연수구', '남동구', '부평구', '계양구', '서구', '강화군', '옹진군'],
     '부산': ['중구', '서구', '동구', '영도구', '부산진구', '동래구', '남구', '북구', '해운대구', '사하구', '금정구', '강서구', '연제구', '수영구', '사상구', '기장군'],
     '대구': ['중구', '동구', '서구', '남구', '북구', '수성구', '달서구', '달성군'],
+    '인천': ['중구', '동구', '미추홀구', '연수구', '남동구', '부평구', '계양구', '서구', '강화군', '옹진군'],
     '광주': ['동구', '서구', '남구', '북구', '광산구'],
     '대전': ['동구', '중구', '서구', '유성구', '대덕구'],
-    '울산': ['중구', '남구', '동구', '북구', '울주군']
+    '울산': ['중구', '남구', '동구', '북구', '울주군'],
+    '세종': ['세종특별자치시'],
+    '경기': ['수원시', '성남시', '의정부시', '안양시', '부천시', '광명시', '평택시', '과천시', '오산시', '시흥시', '군포시', '의왕시', '하남시', '용인시', '파주시', '이천시', '안성시', '김포시', '화성시', '광주시', '여주시', '양평군', '고양시', '동두천시', '가평군', '연천군'],
+    '강원': ['춘천시', '원주시', '강릉시', '동해시', '태백시', '속초시', '삼척시', '홍천군', '횡성군', '영월군', '평창군', '정선군', '철원군', '화천군', '양구군', '인제군', '고성군', '양양군'],
+    '충북': ['청주시', '충주시', '제천시', '보은군', '옥천군', '영동군', '증평군', '진천군', '괴산군', '음성군', '단양군'],
+    '충남': ['천안시', '공주시', '보령시', '아산시', '서산시', '논산시', '계룡시', '당진시', '금산군', '부여군', '서천군', '청양군', '홍성군', '예산군', '태안군'],
+    '전북': ['전주시', '군산시', '익산시', '정읍시', '남원시', '김제시', '완주군', '진안군', '무주군', '장수군', '임실군', '순창군', '고창군', '부안군'],
+    '전남': ['목포시', '여수시', '순천시', '나주시', '광양시', '담양군', '곡성군', '구례군', '고흥군', '보성군', '화순군', '장흥군', '강진군', '해남군', '영암군', '무안군', '함평군', '영광군', '장성군', '완도군', '진도군', '신안군'],
+    '경북': ['포항시', '경주시', '김천시', '안동시', '구미시', '영주시', '영천시', '상주시', '문경시', '경산시', '군위군', '의성군', '청송군', '영양군', '영덕군', '청도군', '고령군', '성주군', '칠곡군', '예천군', '봉화군', '울진군', '울릉군'],
+    '경남': ['창원시', '진주시', '통영시', '사천시', '김해시', '밀양시', '거제시', '양산시', '의령군', '함안군', '창녕군', '고성군', '남해군', '하동군', '산청군', '함양군', '거창군', '합천군'],
+    '제주': ['제주시', '서귀포시']
 };
 
 // 마사지 업체 데이터
 const massageShops = [
-    // 서울 업체들
     {
         id: 1,
-        name: '힐링 스파 강남점',
-        type: 'spa',
-        region: '서울',
-        district: '강남구',
-        address: '서울 강남구 테헤란로 123',
-        detailAddress: '강남역 2번 출구에서 도보 5분, 3층',
-        phone: '02-1234-5678',
-        rating: 4.8,
-        reviewCount: 156,
-        price: '80,000원',
-        description: '프리미엄 스파 서비스',
-        image: 'https://images.unsplash.com/photo-1540555700478-4be284f698e2?w=400&h=250&fit=crop&crop=center',
-        services: ['아로마테라피', '스톤마사지', '발마사지'],
-        subway: '강남역, 선릉역'
+        name: '제주도마사지 프라이빗',
+        type: 'korean',
+        region: '제주',
+        district: '제주시',
+        address: '제주특별자치도 제주시 연동 261-18',
+        detailAddress: '제원 시내 부근 (정확한 위치는 예약 시 안내)',
+        phone: '0507-1859-7062',
+        rating: 4.9,
+        reviewCount: 142,
+        price: '120,000원~',
+        description: '제주도 프라이빗 마사지샵. 20대 전문 힐링 관리사들이 정성스럽게 맞이해드리며, 스웨디시·아로마·로미로미·슈얼 등 다양한 프로그램으로 최상의 힐링을 제공합니다. 전원 한국인 여성 관리사, 프라이빗 1인샵 운영, 주차 가능.',
+        image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=250&fit=crop&crop=center',
+        services: ['스웨디시', '아로마', '로미로미', '슈얼 마사지', '프리미엄 왁싱', '전문 힐링 케어'],
+        subway: '제원 시내',
+        operatingHours: '오전 10시 ~ 새벽 6시 (폰 꺼진 경우 마감, 랜덤 휴무)',
+        staffInfo: '전원 20대~30대 초반 한국인 여성 관리사 (예: 소율(24), 제니(20), 연우(25), 지우(25), 서아(23), 세나(29), 다엘(22), 꽃님(27), 유주(25), 예리(21) 등)',
+        features: ['전원 한국인 여성 관리사', '프라이빗 1인샵 운영', '주차 가능', '무향·무취 최고급 수용성 바디 오일 사용'],
+        keywords: '제주도건마, 제주도마사지, 제주도1인샵, 제주도스웨디시, 제주도아로마마사지, 제주도로미로미, 제주도슈얼마사지',
+        courses: [
+            {
+                category: '스웨디시 프로그램',
+                items: [
+                    {
+                        name: 'A코스',
+                        duration: '40분',
+                        price: '120,000원',
+                        description: '스웨디시 + 센슈얼 + HP'
+                    },
+                    {
+                        name: 'B코스',
+                        duration: '60분',
+                        price: '150,000원',
+                        description: '스웨디시 + 비디슈얼 + HP'
+                    },
+                    {
+                        name: 'C코스',
+                        duration: '70분',
+                        price: '180,000원',
+                        description: '스웨디시 + 비디슈얼 + HP'
+                    }
+                ]
+            },
+            {
+                category: '프리미엄 왁싱',
+                items: [
+                    {
+                        name: 'A코스',
+                        duration: '상담',
+                        price: '상담 문의',
+                        description: '고급 브라질리언'
+                    },
+                    {
+                        name: 'B코스',
+                        duration: '상담',
+                        price: '상담 문의',
+                        description: '고급 브라질리언 +@'
+                    }
+                ]
+            }
+        ],
+        membershipInfo: '기존가 130,000원 → 회원가 120,000원 (사전 예약 및 현금 결제 시 적용)',
+        reviews: [
+            {
+                name: '김**',
+                date: '2024-09-20',
+                rating: 5,
+                comment: '제주에서 이런 곳을 찾다니! 관리사님들이 너무 친절하시고 실력도 최고예요. 스웨디시 받았는데 몸이 정말 가벼워졌어요.'
+            },
+            {
+                name: '박**',
+                date: '2024-09-15',
+                rating: 5,
+                comment: '프라이빗 1인샵이라 편안하게 받을 수 있었어요. 무향 오일이라 샤워 후에도 깔끔하고 좋았습니다. 강추!'
+            },
+            {
+                name: '이**',
+                date: '2024-09-10',
+                rating: 5,
+                comment: '20대 관리사분들이 정말 전문적이에요. 제주 여행 올 때마다 들릴 예정입니다. 주차도 편리해요.'
+            },
+            {
+                name: '최**',
+                date: '2024-09-05',
+                rating: 5,
+                comment: '소율님께 받았는데 정말 실력이 대단해요! 아로마 마사지 받고 나서 스트레스가 완전히 사라졌어요. 제주도 여행의 하이라이트였습니다.'
+            },
+            {
+                name: '정**',
+                date: '2024-08-28',
+                rating: 5,
+                comment: '연우님과 지우님이 정말 친절하시고 전문적이에요. 프리미엄 왁싱도 받았는데 무향이라 샤워 후에도 깔끔했어요. 다음에도 꼭 올게요!'
+            },
+            {
+                name: '한**',
+                date: '2024-08-20',
+                rating: 5,
+                comment: '제주도 여행 중 우연히 발견한 곳인데 정말 대박이에요! 서아님께 받은 로미로미 마사지가 너무 좋았어요. 회원가도 적용해주셔서 감사했습니다.'
+            },
+            {
+                name: '윤**',
+                date: '2024-08-15',
+                rating: 5,
+                comment: '세나님과 다엘님이 정말 예쁘고 실력도 좋아요! 슈얼 마사지 받았는데 몸이 정말 편해졌어요. 제주도에서 가장 좋은 마사지샵이에요.'
+            },
+            {
+                name: '강**',
+                date: '2024-08-10',
+                rating: 5,
+                comment: '꽃님님께 받은 스웨디시가 정말 최고예요! 20대 관리사분들이라 대화도 잘 통하고 편안했어요. 제주도 여행 필수 코스입니다.'
+            },
+            {
+                name: '조**',
+                date: '2024-08-05',
+                rating: 5,
+                comment: '유주님과 예리님이 정말 친절하시고 실력도 대단해요! 아로마 마사지 받고 나서 피부도 좋아지고 몸도 가벼워졌어요. 강력 추천합니다!'
+            },
+            {
+                name: '임**',
+                date: '2024-07-30',
+                rating: 5,
+                comment: '제이님께 받은 프리미엄 왁싱이 정말 만족스러웠어요! 무향 오일이라 샤워 후에도 깔끔하고 좋았습니다. 제주도 여행 중 최고의 선택이었어요.'
+            }
+        ]
     },
     {
         id: 2,
-        name: '태국 전통 마사지 홍대점',
-        type: 'thai',
-        region: '서울',
-        district: '마포구',
-        address: '서울 마포구 홍익로 456',
-        detailAddress: '홍대입구역 9번 출구에서 도보 3분, 지하 1층',
-        phone: '02-2345-6789',
-        rating: 4.6,
-        reviewCount: 89,
-        price: '60,000원',
-        description: '진정한 태국 전통 마사지',
-        image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop&crop=center',
-        services: ['태국 전통 마사지', '오일 마사지', '발마사지'],
-        subway: '홍대입구역, 합정역'
-    },
-    {
-        id: 3,
-        name: '한국 전통 찜질방',
+        name: 'MZ',
         type: 'korean',
-        region: '서울',
-        district: '송파구',
-        address: '서울 송파구 올림픽로 789',
-        detailAddress: '잠실역 1번 출구에서 도보 7분, 2층',
-        phone: '02-3456-7890',
-        rating: 4.4,
-        reviewCount: 203,
-        price: '45,000원',
-        description: '한국 전통 찜질방 체험',
-        image: 'https://images.unsplash.com/photo-1596178060810-6e0a0a4a0b8a?w=400&h=250&fit=crop&crop=center',
-        services: ['찜질방', '한국 전통 마사지', '족욕']
-    },
-    {
-        id: 4,
-        name: '발마사지 전문점 신촌점',
-        type: 'foot',
-        region: '서울',
-        district: '서대문구',
-        address: '서울 서대문구 신촌로 321',
-        phone: '02-4567-8901',
-        rating: 4.7,
-        reviewCount: 134,
-        price: '35,000원',
-        description: '전문 발마사지 서비스',
-        image: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=400&h=250&fit=crop&crop=center',
-        services: ['발마사지', '족욕', '경락 마사지']
-    },
-    {
-        id: 5,
-        name: '럭셔리 스파 건대점',
-        type: 'spa',
-        region: '서울',
-        district: '광진구',
-        address: '서울 광진구 능동로 654',
-        phone: '02-5678-9012',
-        rating: 4.9,
-        reviewCount: 78,
-        price: '120,000원',
-        description: '럭셔리 스파 경험',
-        image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=250&fit=crop&crop=center',
-        services: ['프리미엄 스파', '아로마테라피', '바디 스크럽']
-    },
-    {
-        id: 6,
-        name: '태국 마사지 이태원점',
-        type: 'thai',
-        region: '서울',
-        district: '용산구',
-        address: '서울 용산구 이태원로 987',
-        phone: '02-6789-0123',
-        rating: 4.5,
-        reviewCount: 167,
-        price: '55,000원',
-        description: '이태원의 대표 태국 마사지',
-        image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop&crop=center',
-        services: ['태국 마사지', '오일 마사지', '발마사지']
-    },
-
-    // 경기 업체들
-    {
-        id: 7,
-        name: '수원 힐링 센터',
-        type: 'korean',
-        region: '경기',
-        district: '수원시',
-        address: '경기 수원시 영통구 월드컵로 111',
-        phone: '031-1234-5678',
-        rating: 4.6,
-        reviewCount: 92,
-        price: '50,000원',
-        description: '수원 대표 힐링 센터',
-        image: 'https://images.unsplash.com/photo-1596178060810-6e0a0a4a0b8a?w=400&h=250&fit=crop&crop=center',
-        services: ['한국 전통 마사지', '찜질방', '족욕']
-    },
-    {
-        id: 8,
-        name: '성남 스파 리조트',
-        type: 'spa',
-        region: '경기',
-        district: '성남시',
-        address: '경기 성남시 분당구 판교역로 222',
-        phone: '031-2345-6789',
+        region: '제주',
+        district: '제주시',
+        address: '제주특별자치도 제주시 연동10길 16',
+        detailAddress: '돔나이트 부근 (주차 문의)',
+        phone: '0507-1859-6671',
         rating: 4.8,
-        reviewCount: 145,
-        price: '90,000원',
-        description: '분당 프리미엄 스파',
-        image: 'https://images.unsplash.com/photo-1540555700478-4be284f698e2?w=400&h=250&fit=crop&crop=center',
-        services: ['스파 패키지', '아로마테라피', '바디 마사지']
-    },
-    {
-        id: 9,
-        name: '의정부 태국 마사지',
-        type: 'thai',
-        region: '경기',
-        district: '의정부시',
-        address: '경기 의정부시 평화로 333',
-        phone: '031-3456-7890',
-        rating: 4.4,
-        reviewCount: 67,
-        price: '45,000원',
-        description: '의정부 최고의 태국 마사지',
-        image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop&crop=center',
-        services: ['태국 전통 마사지', '오일 마사지', '발마사지']
-    },
-    {
-        id: 10,
-        name: '안양 발마사지 전문점',
-        type: 'foot',
-        region: '경기',
-        district: '안양시',
-        address: '경기 안양시 만안구 안양로 444',
-        phone: '031-4567-8901',
-        rating: 4.7,
-        reviewCount: 89,
-        price: '30,000원',
-        description: '안양 발마사지 전문',
-        image: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=400&h=250&fit=crop&crop=center',
-        services: ['발마사지', '족욕', '경락 마사지']
-    },
-    {
-        id: 11,
-        name: '부천 스파 센터',
-        type: 'spa',
-        region: '경기',
-        district: '부천시',
-        address: '경기 부천시 원미구 길주로 555',
-        phone: '031-5678-9012',
-        rating: 4.5,
-        reviewCount: 112,
-        price: '70,000원',
-        description: '부천 대표 스파 센터',
-        image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=250&fit=crop&crop=center',
-        services: ['스파 서비스', '아로마테라피', '바디 스크럽']
-    },
-    {
-        id: 12,
-        name: '광명 힐링 마사지',
-        type: 'korean',
-        region: '경기',
-        district: '광명시',
-        address: '경기 광명시 광명로 666',
-        phone: '031-6789-0123',
-        rating: 4.6,
-        reviewCount: 78,
-        price: '40,000원',
-        description: '광명 힐링 마사지 전문',
-        image: 'https://images.unsplash.com/photo-1596178060810-6e0a0a4a0b8a?w=400&h=250&fit=crop&crop=center',
-        services: ['한국 전통 마사지', '찜질방', '족욕']
-    },
-
-    // 인천 업체들
-    {
-        id: 13,
-        name: '인천 스파 월드',
-        type: 'spa',
-        region: '인천',
-        district: '연수구',
-        address: '인천 연수구 컨벤시아대로 777',
-        phone: '032-1234-5678',
-        rating: 4.7,
-        reviewCount: 134,
-        price: '85,000원',
-        description: '인천 최고의 스파 월드',
-        image: 'https://images.unsplash.com/photo-1540555700478-4be284f698e2?w=400&h=250&fit=crop&crop=center',
-        services: ['프리미엄 스파', '아로마테라피', '바디 마사지']
-    },
-    {
-        id: 14,
-        name: '송도 태국 마사지',
-        type: 'thai',
-        region: '인천',
-        district: '연수구',
-        address: '인천 연수구 송도과학로 888',
-        phone: '032-2345-6789',
-        rating: 4.5,
-        reviewCount: 98,
-        price: '65,000원',
-        description: '송도 태국 마사지 전문',
-        image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop&crop=center',
-        services: ['태국 전통 마사지', '오일 마사지', '발마사지']
-    },
-    {
-        id: 15,
-        name: '부평 발마사지 센터',
-        type: 'foot',
-        region: '인천',
-        district: '부평구',
-        address: '인천 부평구 부평대로 999',
-        phone: '032-3456-7890',
-        rating: 4.4,
-        reviewCount: 76,
-        price: '35,000원',
-        description: '부평 발마사지 전문 센터',
-        image: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=400&h=250&fit=crop&crop=center',
-        services: ['발마사지', '족욕', '경락 마사지']
-    },
-    {
-        id: 16,
-        name: '남동구 힐링 스파',
-        type: 'spa',
-        region: '인천',
-        district: '남동구',
-        address: '인천 남동구 구월로 1010',
-        phone: '032-4567-8901',
-        rating: 4.6,
-        reviewCount: 89,
-        price: '75,000원',
-        description: '남동구 힐링 스파',
-        image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=250&fit=crop&crop=center',
-        services: ['힐링 스파', '아로마테라피', '바디 스크럽']
-    },
-
-    // 부산 업체들
-    {
-        id: 17,
-        name: '해운대 스파 리조트',
-        type: 'spa',
-        region: '부산',
-        district: '해운대구',
-        address: '부산 해운대구 해운대로 1111',
-        phone: '051-1234-5678',
-        rating: 4.8,
-        reviewCount: 234,
-        price: '100,000원',
-        description: '해운대 최고의 스파 리조트',
-        image: 'https://images.unsplash.com/photo-1540555700478-4be284f698e2?w=400&h=250&fit=crop&crop=center',
-        services: ['오션뷰 스파', '아로마테라피', '바디 마사지']
-    },
-    {
-        id: 18,
-        name: '서면 태국 마사지',
-        type: 'thai',
-        region: '부산',
-        district: '부산진구',
-        address: '부산 부산진구 중앙대로 2222',
-        phone: '051-2345-6789',
-        rating: 4.6,
-        reviewCount: 156,
-        price: '55,000원',
-        description: '서면 태국 마사지 전문',
-        image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop&crop=center',
-        services: ['태국 전통 마사지', '오일 마사지', '발마사지']
-    },
-
-    // 대구 업체들
-    {
-        id: 19,
-        name: '동성로 힐링 센터',
-        type: 'korean',
-        region: '대구',
-        district: '중구',
-        address: '대구 중구 동성로 3333',
-        phone: '053-1234-5678',
-        rating: 4.5,
-        reviewCount: 98,
-        price: '45,000원',
-        description: '동성로 힐링 센터',
-        image: 'https://images.unsplash.com/photo-1596178060810-6e0a0a4a0b8a?w=400&h=250&fit=crop&crop=center',
-        services: ['한국 전통 마사지', '찜질방', '족욕']
-    },
-    {
-        id: 20,
-        name: '수성구 스파 월드',
-        type: 'spa',
-        region: '대구',
-        district: '수성구',
-        address: '대구 수성구 동대구로 4444',
-        phone: '053-2345-6789',
-        rating: 4.7,
-        reviewCount: 123,
-        price: '80,000원',
-        description: '수성구 스파 월드',
-        image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=250&fit=crop&crop=center',
-        services: ['프리미엄 스파', '아로마테라피', '바디 마사지']
-    },
-
-    // 광주 업체들
-    {
-        id: 21,
-        name: '광주 힐링 마사지',
-        type: 'korean',
-        region: '광주',
-        district: '서구',
-        address: '광주 서구 상무대로 5555',
-        phone: '062-1234-5678',
-        rating: 4.4,
-        reviewCount: 67,
-        price: '40,000원',
-        description: '광주 힐링 마사지',
-        image: 'https://images.unsplash.com/photo-1596178060810-6e0a0a4a0b8a?w=400&h=250&fit=crop&crop=center',
-        services: ['한국 전통 마사지', '찜질방', '족욕']
-    },
-    {
-        id: 22,
-        name: '동구 발마사지 전문점',
-        type: 'foot',
-        region: '광주',
-        district: '동구',
-        address: '광주 동구 중앙로 6666',
-        phone: '062-2345-6789',
-        rating: 4.6,
-        reviewCount: 89,
-        price: '35,000원',
-        description: '동구 발마사지 전문점',
-        image: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=400&h=250&fit=crop&crop=center',
-        services: ['발마사지', '족욕', '경락 마사지']
-    },
-
-    // 대전 업체들
-    {
-        id: 23,
-        name: '대전 스파 센터',
-        type: 'spa',
-        region: '대전',
-        district: '유성구',
-        address: '대전 유성구 대학로 7777',
-        phone: '042-1234-5678',
-        rating: 4.5,
-        reviewCount: 112,
-        price: '70,000원',
-        description: '대전 스파 센터',
-        image: 'https://images.unsplash.com/photo-1540555700478-4be284f698e2?w=400&h=250&fit=crop&crop=center',
-        services: ['스파 서비스', '아로마테라피', '바디 마사지']
-    },
-    {
-        id: 24,
-        name: '중구 태국 마사지',
-        type: 'thai',
-        region: '대전',
-        district: '중구',
-        address: '대전 중구 중앙로 8888',
-        phone: '042-2345-6789',
-        rating: 4.6,
-        reviewCount: 78,
-        price: '50,000원',
-        description: '중구 태국 마사지',
-        image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop&crop=center',
-        services: ['태국 전통 마사지', '오일 마사지', '발마사지']
-    },
-
-    // 울산 업체들
-    {
-        id: 25,
-        name: '울산 힐링 스파',
-        type: 'spa',
-        region: '울산',
-        district: '남구',
-        address: '울산 남구 삼산로 9999',
-        phone: '052-1234-5678',
-        rating: 4.7,
-        reviewCount: 95,
-        price: '75,000원',
-        description: '울산 힐링 스파',
-        image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=250&fit=crop&crop=center',
-        services: ['힐링 스파', '아로마테라피', '바디 마사지']
-    },
-    {
-        id: 26,
-        name: '중구 발마사지 전문점',
-        type: 'foot',
-        region: '울산',
-        district: '중구',
-        address: '울산 중구 성남동 10101',
-        phone: '052-2345-6789',
-        rating: 4.4,
-        reviewCount: 56,
-        price: '30,000원',
-        description: '중구 발마사지 전문점',
-        image: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=400&h=250&fit=crop&crop=center',
-        services: ['발마사지', '족욕', '경락 마사지']
-    },
-    // 출장마사지 업체들
-    {
-        id: 27,
-        name: '서울 출장마사지 전문',
-        type: 'outcall',
-        region: '서울',
-        district: '강남구',
-        address: '서울 강남구 테헤란로 1111',
-        phone: '02-1111-2222',
-        rating: 4.7,
-        reviewCount: 89,
-        price: '100,000원',
-        description: '서울 전역 출장마사지 서비스',
-        image: 'https://images.unsplash.com/photo-1540555700478-4be284f698e2?w=400&h=250&fit=crop&crop=center',
-        services: ['출장마사지', '홈케어', '24시간 서비스']
-    },
-    {
-        id: 28,
-        name: '경기 출장마사지 센터',
-        type: 'outcall',
-        region: '경기',
-        district: '수원시',
-        address: '경기 수원시 영통구 월드컵로 2222',
-        phone: '031-2222-3333',
-        rating: 4.6,
-        reviewCount: 67,
-        price: '90,000원',
-        description: '경기 전역 출장마사지',
-        image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop&crop=center',
-        services: ['출장마사지', '기업출장', '이벤트 마사지']
-    },
-    {
-        id: 29,
-        name: '인천 출장마사지',
-        type: 'outcall',
-        region: '인천',
-        district: '연수구',
-        address: '인천 연수구 컨벤시아대로 3333',
-        phone: '032-3333-4444',
-        rating: 4.5,
-        reviewCount: 45,
-        price: '85,000원',
-        description: '인천 출장마사지 전문',
-        image: 'https://images.unsplash.com/photo-1596178060810-6e0a0a4a0b8a?w=400&h=250&fit=crop&crop=center',
-        services: ['출장마사지', '호텔출장', '공항출장']
-    },
-    // 왁싱 업체들
-    {
-        id: 30,
-        name: '서울 왁싱 전문점',
-        type: 'waxing',
-        region: '서울',
-        district: '강남구',
-        address: '서울 강남구 선릉로 4444',
-        phone: '02-4444-5555',
-        rating: 4.8,
-        reviewCount: 123,
-        price: '50,000원',
-        description: '서울 최고의 왁싱 전문점',
-        image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=250&fit=crop&crop=center',
-        services: ['왁싱', '브라질리언 왁싱', '페이셜 왁싱']
-    },
-    {
-        id: 31,
-        name: '경기 왁싱 스튜디오',
-        type: 'waxing',
-        region: '경기',
-        district: '성남시',
-        address: '경기 성남시 분당구 판교역로 5555',
-        phone: '031-5555-6666',
-        rating: 4.7,
-        reviewCount: 78,
-        price: '45,000원',
-        description: '경기 왁싱 전문 스튜디오',
-        image: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=400&h=250&fit=crop&crop=center',
-        services: ['왁싱', '바디 왁싱', '아이브로우 왁싱']
-    },
-    {
-        id: 32,
-        name: '인천 왁싱 뷰티',
-        type: 'waxing',
-        region: '인천',
-        district: '부평구',
-        address: '인천 부평구 부평대로 6666',
-        phone: '032-6666-7777',
-        rating: 4.6,
-        reviewCount: 56,
-        price: '40,000원',
-        description: '인천 왁싱 뷰티 전문',
-        image: 'https://images.unsplash.com/photo-1540555700478-4be284f698e2?w=400&h=250&fit=crop&crop=center',
-        services: ['왁싱', '왁싱 케어', '스킨케어']
+        reviewCount: 0,
+        price: '150,000원~',
+        description: '제주 연동 최고의 서비스를 보장하는 MZ입니다. 깨끗하고 쾌적한 시설로 고객님의 지친일상에 활력과 행복으로 보답드리겠습니다. 고객님을 힐링으로 모시겠습니다.',
+        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=250&fit=crop&crop=center',
+        services: ['스웨디시', '타이마사지', '왁싱', '스파', '커플마사지', '아로마마사지', '로미로미', '슈얼마사지'],
+        subway: '돔나이트 부근',
+        operatingHours: '24시간 (랜덤휴무 or 폰OFF)',
+        staffInfo: '전원 한국인 여 쌤들 (예: 유현(24), 서우(23), 체이(25), 지우(27) 등)',
+        features: ['전원 한국인 여성 관리사', '1인샵 운영', '주차 문의', '24시간 운영'],
+        keywords: '제주1인샵, 제주건마, 제주스웨디시, 제주타이마사지, 제주왁싱, 제주스파, 제주커플마사지, 제주아로마마사지, 제주로미로미, 제주슈얼마사지',
+        courses: [
+            {
+                category: '감성 스웨디시',
+                items: [
+                    {
+                        name: 'A코스',
+                        duration: '60분',
+                        price: '150,000원',
+                        description: '스페셜스웨디시+림프+감성'
+                    },
+                    {
+                        name: 'B코스',
+                        duration: '70분',
+                        price: '180,000원',
+                        description: '스페셜스웨디시+슈+림프+감성'
+                    }
+                ]
+            }
+        ],
+        membershipInfo: '기존가 140,000원 → 회원가 150,000원 (사전 예약 및 현금 결제 시 적용)',
+        reviews: []
     }
 ];
 
@@ -541,8 +216,31 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 });
 
+// 지역 선택 옵션 초기화
+function initializeRegionOptions() {
+    const regionSelect = document.getElementById('regionSelect');
+    if (!regionSelect) return;
+    
+    // 기존 옵션 제거 (첫 번째 옵션 "지역을 선택하세요" 제외)
+    while (regionSelect.children.length > 1) {
+        regionSelect.removeChild(regionSelect.lastChild);
+    }
+    
+    // districtData의 키들을 정렬하여 옵션으로 추가
+    const regions = Object.keys(districtData).sort();
+    regions.forEach(region => {
+        const option = document.createElement('option');
+        option.value = region;
+        option.textContent = region;
+        regionSelect.appendChild(option);
+    });
+}
+
 // 앱 초기화
 function initializeApp() {
+    // 지역 선택 옵션 동적 생성
+    initializeRegionOptions();
+    
     // 초기 상태 설정 - 전체 필터 버튼 활성화
     const allFilterBtn = document.querySelector('.filter-btn[data-filter="all"]');
     if (allFilterBtn) {
@@ -653,6 +351,16 @@ function initializeApp() {
                 // 전체 박스에 active 클래스 추가
                 const overallBoxes = document.querySelectorAll('.country-box[data-country="overall"]');
                 overallBoxes.forEach(box => box.classList.add('active'));
+                
+                // 국가 필터 섹션 다시 보이기
+                const massageCountryFilterSection = document.getElementById('massageCountryFilterSection');
+                const outcallCountryFilterSection = document.getElementById('outcallCountryFilterSection');
+                if (massageCountryFilterSection) {
+                    massageCountryFilterSection.style.display = '';
+                }
+                if (outcallCountryFilterSection) {
+                    outcallCountryFilterSection.style.display = '';
+                }
             }
             
             // 필터별 국가 박스 표시/숨김
@@ -688,6 +396,8 @@ function initializeApp() {
 
     // 마사지 국가별 박스 이벤트 리스너
     const massageCountryBoxes = document.querySelectorAll('#massageCountryFilterSection .country-box');
+    const massageCountryFilterSection = document.getElementById('massageCountryFilterSection');
+    
     massageCountryBoxes.forEach(box => {
         box.addEventListener('click', function(e) {
             e.preventDefault(); // 기본 동작 방지
@@ -699,11 +409,17 @@ function initializeApp() {
             currentCountry = this.dataset.country;
             // 필터링된 결과 표시
             displayFilteredResults();
+            // 국가 필터 섹션 숨기기
+            if (massageCountryFilterSection) {
+                massageCountryFilterSection.style.display = 'none';
+            }
         });
     });
 
     // 출장마사지 국가별 박스 이벤트 리스너
     const outcallCountryBoxes = document.querySelectorAll('#outcallCountryFilterSection .country-box');
+    const outcallCountryFilterSection = document.getElementById('outcallCountryFilterSection');
+    
     outcallCountryBoxes.forEach(box => {
         box.addEventListener('click', function(e) {
             e.preventDefault(); // 기본 동작 방지
@@ -715,6 +431,10 @@ function initializeApp() {
             currentCountry = this.dataset.country;
             // 필터링된 결과 표시
             displayFilteredResults();
+            // 국가 필터 섹션 숨기기
+            if (outcallCountryFilterSection) {
+                outcallCountryFilterSection.style.display = 'none';
+            }
         });
     });
 
@@ -875,6 +595,15 @@ function displayFilteredResults() {
             // 출장마사지는 국가별 구분 없이 모든 국가에서 제공
             // 필요시 추가 로직 구현 가능
         }
+    } else if (currentFilter === 'waxing') {
+        // 왁싱 타입 - services에 '왁싱' 관련 키워드가 있는 업체들
+        filteredShops = filteredShops.filter(shop => 
+            shop.services && shop.services.some(service => 
+                service.toLowerCase().includes('왁싱') || 
+                service.toLowerCase().includes('waxing') ||
+                service.toLowerCase().includes('브라질리언')
+            )
+        );
     } else if (currentFilter !== 'all') {
         filteredShops = filteredShops.filter(shop => shop.type === currentFilter);
     }
@@ -963,7 +692,7 @@ function createShopCard(shop) {
                     </div>
                     <div class="info-item greeting">
                         <i class="fas fa-heart"></i>
-                        <span>${getGreeting(shop.type)}</span>
+                        <span>${getGreeting(shop)}</span>
                     </div>
                 </div>
                 
@@ -1020,17 +749,42 @@ function getCountryFlags(type) {
     }).join('');
 }
 
-// 인사말 반환
-function getGreeting(type) {
-    const greetingMap = {
-        'thai': '안녕하세요! 태국 전통 마사지로 힐링해드립니다 💆‍♀️',
-        'korean': '어서오세요! 한국 전통 찜질방에서 휴식을 취하세요 🧖‍♀️',
-        'foot': '환영합니다! 전문 발마사지로 피로를 풀어드립니다 🦶',
-        'spa': 'Welcome! 프리미엄 스파로 완벽한 휴식을 경험하세요 ✨',
-        'outcall': '안녕하세요! 언제 어디서나 출장마사지로 편리하게 🚗💆‍♀️',
-        'waxing': '환영합니다! 전문 왁싱으로 매끄러운 피부를 만들어드려요 ✨'
+// 인사말 반환 (업체별 동적 생성)
+function getGreeting(shop) {
+    if (!shop.staffInfo) {
+        return '20대 힐링관리사들이 정성스럽게 맞이';
+    }
+    
+    // 관리사 나이 정보 추출
+    const ageMatches = shop.staffInfo.match(/\((\d+)\)/g);
+    if (!ageMatches || ageMatches.length === 0) {
+        return '20대 힐링관리사들이 정성스럽게 맞이';
+    }
+    
+    // 나이들 추출
+    const ages = ageMatches.map(match => parseInt(match.replace(/[()]/g, '')));
+    const minAge = Math.min(...ages);
+    const maxAge = Math.max(...ages);
+    
+    // 나이대 결정
+    let ageGroup = '';
+    if (minAge >= 20 && maxAge <= 29) {
+        ageGroup = '20대';
+    } else if (minAge >= 30 && maxAge <= 39) {
+        ageGroup = '30대';
+    } else if (minAge >= 20 && maxAge <= 39) {
+        ageGroup = '20대 & 30대';
+    } else {
+        ageGroup = '20대';
+    }
+    
+    // 업체별 맞춤 인사말
+    const customGreetings = {
+        '제주도마사지 프라이빗': '20대 & 30대 힐링관리사',
+        'MZ': '20대 & 30대 힐링관리사'
     };
-    return greetingMap[type] || '안녕하세요! 마사지로 힐링해드립니다 💆‍♀️';
+    
+    return customGreetings[shop.name] || '20대 & 30대 힐링관리사';
 }
 
 // 결과 헤더 업데이트
@@ -1110,3 +864,40 @@ function displayMassageShops(shops) {
     // 카드 애니메이션 적용 (즉시 실행)
     observeCards();
 }
+
+// 회사소개 모달 열기
+function openAboutModal(event) {
+    event.preventDefault();
+    const modal = document.getElementById('aboutModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // 스크롤 방지
+    }
+}
+
+// 이용약관 모달 열기
+function openTermsModal(event) {
+    event.preventDefault();
+    const modal = document.getElementById('termsModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // 스크롤 방지
+    }
+}
+
+// 모달 닫기
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // 스크롤 복원
+    }
+}
+
+// 모달 배경 클릭 시 닫기
+window.addEventListener('click', function(event) {
+    if (event.target.classList.contains('modal')) {
+        event.target.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
