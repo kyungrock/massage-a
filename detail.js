@@ -48,6 +48,7 @@ function loadShopDetail() {
     displayStaffInfo(shop);
     displayShopCourses(shop);
     displayShopReviews(shop);
+    updateSEOMetaTags(shop);
     console.log('업체 상세 페이지 로드 완료');
 }
 
@@ -659,6 +660,79 @@ function closeModal(modalId) {
         modal.classList.remove('active');
         document.body.style.overflow = ''; // 스크롤 복원
     }
+}
+
+// SEO 메타태그 동적 업데이트
+function updateSEOMetaTags(shop) {
+    // 지역키워드 생성
+    const regionKeyword = getRegionKeyword(shop.region);
+    const districtKeyword = shop.district ? `${shop.district}마사지` : '';
+    
+    // 제목 업데이트
+    const title = `${shop.name} - ${regionKeyword} 상세정보 | 마사지가가`;
+    document.getElementById('pageTitle').textContent = title;
+    document.title = title;
+    
+    // 메타 설명 업데이트
+    const description = `${shop.name} ${regionKeyword} 상세정보. ${shop.price}부터, ${shop.operatingHours}. ${shop.address}. 전화예약 ${shop.phone}. 마사지가가에서 확인하세요.`;
+    document.getElementById('pageDescription').setAttribute('content', description);
+    
+    // 키워드 업데이트
+    const keywords = `${regionKeyword}, ${districtKeyword}, ${shop.name}, 마사지상세, 마사지예약, 마사지가격, 마사지코스, 마사지리뷰, 마사지가가`;
+    document.getElementById('pageKeywords').setAttribute('content', keywords);
+    
+    // Open Graph 메타태그 업데이트
+    updateOpenGraphTags(shop, regionKeyword);
+}
+
+// 지역별 키워드 생성
+function getRegionKeyword(region) {
+    const regionMap = {
+        '서울': '서울마사지',
+        '부산': '부산마사지',
+        '대구': '대구마사지',
+        '인천': '인천마사지',
+        '광주': '광주마사지',
+        '대전': '대전마사지',
+        '울산': '울산마사지',
+        '세종': '세종마사지',
+        '경기': '경기마사지',
+        '강원': '강원마사지',
+        '충북': '충북마사지',
+        '충남': '충남마사지',
+        '전북': '전북마사지',
+        '전남': '전남마사지',
+        '경북': '경북마사지',
+        '경남': '경남마사지',
+        '제주': '제주도마사지'
+    };
+    return regionMap[region] || `${region}마사지`;
+}
+
+// 업체명에 지역키워드 자동 적용 함수
+function generateShopNameWithRegion(originalName, region) {
+    const regionKeyword = getRegionKeyword(region);
+    
+    // 이미 지역키워드가 포함되어 있는지 확인
+    if (originalName.includes('마사지') || originalName.includes(region)) {
+        return originalName;
+    }
+    
+    // 지역키워드 + 원래 이름 형태로 생성
+    return `${regionKeyword} ${originalName}`;
+}
+
+// Open Graph 메타태그 업데이트
+function updateOpenGraphTags(shop, regionKeyword) {
+    const title = `${shop.name} - ${regionKeyword} 상세정보 | 마사지가가`;
+    const description = `${shop.name} ${regionKeyword} 상세정보. ${shop.price}부터, ${shop.operatingHours}. ${shop.address}. 전화예약 ${shop.phone}.`;
+    
+    // 기존 Open Graph 메타태그 업데이트
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    
+    if (ogTitle) ogTitle.setAttribute('content', title);
+    if (ogDescription) ogDescription.setAttribute('content', description);
 }
 
 // 모달 배경 클릭 시 닫기
